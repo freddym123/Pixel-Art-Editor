@@ -9,6 +9,7 @@ function App() {
   const [tool, setTool] = useState("pencil")
   const [currentColor, setCurrentColor] = useState("#000000")
   const [uploadedImage, setUploadedImage] = useState([])
+  const [currentCoord, setCurrentCoord] = useState(false)
 
   function changeColor(color){
     setCurrentColor(color)
@@ -51,8 +52,8 @@ function App() {
       <main>
         <div className='canvasContainer'>
           <Tools changeTool={changeTool} changeColor={changeColor} currentColor={currentColor}></Tools>
-          <Canvas toolMethod={tool} currentColor={currentColor} changeColor={changeColor} uploadedImage={uploadedImage} displayUploadedImage={displayUploadedImage}></Canvas>
-          <FileOptions displayUploadedImage={displayUploadedImage}></FileOptions>
+          <Canvas toolMethod={tool} currentColor={currentColor} changeColor={changeColor} uploadedImage={uploadedImage} displayUploadedImage={displayUploadedImage} setCurrentCoord={setCurrentCoord}></Canvas>
+          <FileOptions displayUploadedImage={displayUploadedImage} currentCoord={currentCoord}></FileOptions>
         </div>
         
       </main>

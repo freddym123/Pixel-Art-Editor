@@ -1,10 +1,10 @@
 import { useRef, useEffect } from "react"
-export default function FileOptions({displayUploadedImage}){
+export default function FileOptions({displayUploadedImage, currentCoord}){
     const fileInput = useRef(null)
     const scale = 20;
 
     function saveArt(){
-        const canvas = document.querySelector("canvas")
+        const canvas = document.querySelector(".drawCanvas")
         console.log(canvas)
         const link = document.createElement("a")
         link.setAttribute("href", canvas.toDataURL())
@@ -78,5 +78,8 @@ export default function FileOptions({displayUploadedImage}){
         <button type="button" onClick={saveArt}><i className="fa-regular fa-floppy-disk"></i> Save</button>
         <input type="file" id="fileupload" onChange={displayImage} ref={fileInput}></input>
         <label htmlFor="fileupload"><i className="fa-solid fa-upload"></i> Upload</label>
+        <div className="coord">
+            {`[24:24] ${currentCoord ? currentCoord.x + ":": ""}${currentCoord? currentCoord.y : ""}`}
+        </div>
     </div>)
 }
